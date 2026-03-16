@@ -28,22 +28,20 @@
     </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
-
-<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
-
 <header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 px-4 md:px-10 py-4 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80">
 <div class="max-w-[960px] mx-auto flex items-center justify-between gap-4 w-full">
 <div class="flex items-center gap-4">
-<a href="dashboard.html" class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
 <span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
-</a>
+</button>
 <h1 class="text-xl font-bold leading-tight tracking-[-0.015em]">Buy Airtime</h1>
 </div>
 <div class="flex items-center gap-3">
-<a href="history.html" class="flex size-10 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-colors">
+<button class="flex size-10 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-colors">
 <span class="material-symbols-outlined">history</span>
-</a>
+</button>
 <div class="bg-primary/10 rounded-full border border-primary/20 px-3 py-1 hidden sm:flex items-center gap-2">
 <span class="text-xs font-semibold text-primary">Balance: ₦25,000.00</span>
 </div>
@@ -51,49 +49,8 @@
 </div>
 </header>
 <main class="flex flex-1 justify-center py-8">
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 py-4 md:py-8 mx-auto space-y-6 md:space-y-8">
-
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 py-4 md:py-8 mx-auto space-y-6 md:space-y-8 w-full">
 <div class="space-y-6">
-
-<section>
-<h3 class="text-lg font-bold mb-4">Select Operator</h3>
-<div class="flex flex-row justify-between items-start gap-2 overflow-x-auto pb-2"><div class="flex flex-row justify-between items-start gap-2 overflow-x-auto pb-2 w-full">
-<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'MTN')">
-<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
-<div class="size-full rounded-full bg-yellow-400 overflow-hidden flex items-center justify-center">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrfFgFV1LaXGk_ZgpVO7dlei0TsdBkRg4uYYjz5IvIRE5p7ud8YMoVvyZsPZYAZvOefbVhID2AMXBSikRv__EOXt-g3njhZaon2EQbdJOwZRN9uHD9q4KoEGImO2tRzzaBqgGUs5ZufXcRW4GrwLKCO8mrxkYX8DXFP6YrJw_2MwM2PemjoN-q6yf-uuKnhAynYn5TDTUlY6JHVaPmAmlj_NNnBYAHOsTnodELvqvg5Od6l7MKiUWHPPyRqVcs-9tLnQ91b8t9AEs"/>
-</div>
-</div>
-<span class="font-bold text-xs text-slate-600 dark:text-slate-400 group-[.active]:text-primary">MTN</span>
-</button>
-<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'Airtel')">
-<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
-<div class="size-full rounded-full bg-red-600 overflow-hidden flex items-center justify-center">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs9I3nucToLGd5fz_GshKM35NrOeUPGVvaAZUhWWjXUba_vHzayH8ENuKIdhmtsBQZGNLeLMeBOcsSAiay1_Tjt-l8DH6uZ7Mxndb0uKh9nsLZHeo_5wA_3vJvihFdVZwnYw9bmbItoLDU9PG_CrX4BHtFzQf4jZbuTnmLYCmBKOXtXhA9UhZPmLBGMvL1LmYxU9wmtLKP-X7fBbFvmCQ23QrscraNwVoxalpPLmO4NqQcFXnfB3mv7yLu8ugFlw0KeDaQELul3ns"/>
-</div>
-</div>
-<span class="font-bold text-xs text-slate-600 dark:text-slate-400 group-[.active]:text-primary">Airtel</span>
-</button>
-<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'Glo')">
-<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
-<div class="size-full rounded-full bg-green-600 overflow-hidden flex items-center justify-center">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNjn02fbh2NO7_CaRbqcbuzfCM3BPC44RLdKrtvgOiiEvbkbJQmFFkDZBgMsrLEWr14PxRy81vsWfmzqfdvHHnt4ZvBfz7JsqtelXlfmF1ZuFQxMcObYIGEahTUDvOkE5WScHx7l2hNT-IwM7a0QMUGZK6LkCFglX8V1uqDlpHO6UcvGcJ4oPmw9c6ArF233P9OnmzDk1wlYaA7L9K-IHgtjkh96H6KxkO88dSl9FtlcCbJT2vWZ8UP8aMh-diQokjmT_nVgCAY_Q"/>
-</div>
-</div>
-<span class="font-bold text-xs text-slate-600 dark:text-slate-400 group-[.active]:text-primary">Glo</span>
-</button>
-<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, '9mobile')">
-<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
-<div class="size-full rounded-full bg-emerald-500 overflow-hidden flex items-center justify-center">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8xumBeErGerCpDzUeunIxgPZv-H0HbwLuOXfSej-NCPKrM6BhdEAx3wINBtsM7vkmaY9xaw5oFWROKKB0WlETTJZE1wdPP7rgFRoEdFIyHu80tm6gexuH7kIO3vK9yvwDf_3WroALbBHekLbEBIYIWU_aXzplx2IqNfXC3r8Mg9Ho74zfZlr_irLGC1TDQ37Z8CjjtzaVAcPxPglrB5sHBG_iT0wkNsdJwCWcIEGCNLLLPbGCiTeresdOKVoBh1JZT0nh5kpWGnQ"/>
-</div>
-</div>
-<span class="font-bold text-xs text-slate-600 dark:text-slate-400 group-[.active]:text-primary">9mobile</span>
-</button>
-</div></div>
-</section>
-
-
 <section class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
 <label class="flex flex-col gap-3">
 <div class="flex justify-between items-center">
@@ -118,7 +75,41 @@
 <p class="text-xs text-slate-500 dark:text-slate-400">Select or enter the number you want to top up</p>
 </label>
 </section>
-
+<section><h3 class="text-lg font-bold mb-4">Select Operator</h3>
+<div class="flex flex-row items-center gap-4 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-between">
+<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'MTN')">
+<div class="size-16 sm:size-20 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
+<div class="size-full rounded-full bg-yellow-400 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrfFgFV1LaXGk_ZgpVO7dlei0TsdBkRg4uYYjz5IvIRE5p7ud8YMoVvyZsPZYAZvOefbVhID2AMXBSikRv__EOXt-g3njhZaon2EQbdJOwZRN9uHD9q4KoEGImO2tRzzaBqgGUs5ZufXcRW4GrwLKCO8mrxkYX8DXFP6YrJw_2MwM2PemjoN-q6yf-uuKnhAynYn5TDTUlY6JHVaPmAmlj_NNnBYAHOsTnodELvqvg5Od6l7MKiUWHPPyRqVcs-9tLnQ91b8t9AEs"/>
+</div>
+</div>
+<span class="font-bold text-xs sm:text-sm text-slate-600 dark:text-slate-400 group-[.active]:text-primary">MTN</span>
+</button>
+<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'Airtel')">
+<div class="size-16 sm:size-20 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
+<div class="size-full rounded-full bg-red-600 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs9I3nucToLGd5fz_GshKM35NrOeUPGVvaAZUhWWjXUba_vHzayH8ENuKIdhmtsBQZGNLeLMeBOcsSAiay1_Tjt-l8DH6uZ7Mxndb0uKh9nsLZHeo_5wA_3vJvihFdVZwnYw9bmbItoLDU9PG_CrX4BHtFzQf4jZbuTnmLYCmBKOXtXhA9UhZPmLBGMvL1LmYxU9wmtLKP-X7fBbFvmCQ23QrscraNwVoxalpPLmO4NqQcFXnfB3mv7yLu8ugFlw0KeDaQELul3ns"/>
+</div>
+</div>
+<span class="font-bold text-xs sm:text-sm text-slate-600 dark:text-slate-400 group-[.active]:text-primary">Airtel</span>
+</button>
+<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, 'Glo')">
+<div class="size-16 sm:size-20 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
+<div class="size-full rounded-full bg-green-600 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNjn02fbh2NO7_CaRbqcbuzfCM3BPC44RLdKrtvgOiiEvbkbJQmFFkDZBgMsrLEWr14PxRy81vsWfmzqfdvHHnt4ZvBfz7JsqtelXlfmF1ZuFQxMcObYIGEahTUDvOkE5WScHx7l2hNT-IwM7a0QMUGZK6LkCFglX8V1uqDlpHO6UcvGcJ4oPmw9c6ArF233P9OnmzDk1wlYaA7L9K-IHgtjkh96H6KxkO88dSl9FtlcCbJT2vWZ8UP8aMh-diQokjmT_nVgCAY_Q"/>
+</div>
+</div>
+<span class="font-bold text-xs sm:text-sm text-slate-600 dark:text-slate-400 group-[.active]:text-primary">Glo</span>
+</button>
+<button class="network-btn flex flex-col items-center gap-2 group shrink-0" onclick="selectNetwork(this, '9mobile')">
+<div class="size-16 sm:size-20 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-center p-1 transition-all group-[.active]:border-primary group-[.active]:bg-primary/5 active:scale-95">
+<div class="size-full rounded-full bg-emerald-500 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8xumBeErGerCpDzUeunIxgPZv-H0HbwLuOXfSej-NCPKrM6BhdEAx3wINBtsM7vkmaY9xaw5oFWROKKB0WlETTJZE1wdPP7rgFRoEdFIyHu80tm6gexuH7kIO3vK9yvwDf_3WroALbBHekLbEBIYIWU_aXzplx2IqNfXC3r8Mg9Ho74zfZlr_irLGC1TDQ37Z8CjjtzaVAcPxPglrB5sHBG_iT0wkNsdJwCWcIEGCNLLLPbGCiTeresdOKVoBh1JZT0nh5kpWGnQ"/>
+</div>
+</div>
+<span class="font-bold text-xs sm:text-sm text-slate-600 dark:text-slate-400 group-[.active]:text-primary">9mobile</span>
+</button>
+</div></section>
 <section class="space-y-4">
 <h3 class="text-lg font-bold">Choose Amount</h3>
 <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
@@ -148,7 +139,7 @@
 </div>
 </div>
 </main><footer class="sticky bottom-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-4 pb-6 sm:pb-8 z-50">
-<div class="max-w-[960px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="max-w-[960px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
 <div class="hidden sm:block flex-1">
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase">Total Amount</p>
 <p class="text-2xl font-black text-primary" id="summaryTotal">₦0.00</p>
@@ -161,41 +152,6 @@
 </footer>
 </div>
 </div>
-
-
-<!-- loading -->
-
-<div class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background-light dark:bg-background-dark transition-opacity duration-700 ease-in-out" id="loading-overlay">
-<div class="flex flex-col items-center gap-6">
-<div class="size-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
-<div class="flex flex-col items-center gap-2">
-<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white mb-2">
-<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
-</div>
-<p class="text-slate-900 dark:text-slate-100 font-bold tracking-widest uppercase text-sm animate-pulse">Loading...</p>
-</div>
-</div>
-</div>
-
-</div>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            const overlay = document.getElementById('loading-overlay');
-            if (overlay) {
-                overlay.classList.add('opacity-0');
-                overlay.style.pointerEvents = 'none';
-                setTimeout(() => {
-                    overlay.remove();
-                }, 700); // Wait for transition to finish
-            }
-        }, 1000);
-    });
-</script>
-
-
-
 <script>
         let selectedNetwork = '';
         let currentAmount = 0;
