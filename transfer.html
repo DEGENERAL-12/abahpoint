@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Transfer to Bank - ABAH-POINT</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 px-4 md:px-10 py-4 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80"><div class="max-w-[960px] mx-auto flex items-center justify-between gap-4 w-full">
+<div class="flex items-center gap-4">
+<a href="dashboard.html" class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</a>
+<h1 class="text-xl font-bold leading-tight tracking-[-0.015em]">Transfer Money</h1>
+</div>
+<div class="flex items-center gap-3">
+<a href="history.html" class="flex size-10 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">history</span>
+</a>
+<div class="bg-primary/10 rounded-full border border-primary/20 px-3 py-1 hidden sm:flex items-center gap-2">
+<span class="text-xs font-semibold text-primary">Balance: ₦25,450.00</span>
+</div>
+<div class="flex items-center gap-2 ml-2">
+<span class="material-symbols-outlined text-primary">swap_horiz</span>
+<span class="font-bold text-sm hidden sm:inline">Transfer money</span>
+</div>
+</div>
+</div></header>
+
+<main class="max-w-[960px] mx-auto p-4 pb-32">
+<!-- Title Section -->
+<div class="mb-6">
+<h2 class="text-2xl font-bold tracking-tight">Transfer to Bank</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Send money to any commercial bank instantly</p>
+</div>
+<!-- Transfer Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<!-- Balance Banner -->
+<div class="p-4 bg-primary/5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-sm font-medium">Available Balance</span>
+</div>
+<span class="text-lg font-bold text-primary">₦50,000.00</span>
+</div>
+<div class="p-6 space-y-6">
+<!-- Beneficiary Toggle -->
+<div class="flex justify-end">
+<button class="flex items-center gap-2 text-primary font-bold text-sm hover:underline" onclick="document.getElementById('beneficiaryModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                        Select Beneficiary
+                    </button>
+</div>
+<!-- Form Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Bank Selection -->
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Select Destination Bank</label>
+<div class="relative" id="bankDropdownContainer">
+<button class="w-full h-14 pl-12 pr-4 text-left rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all flex items-center justify-between" id="bankSelectBtn" onclick="toggleBankDropdown()" type="button">
+<span class="text-slate-500" id="selectedBankText">Choose a bank</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">account_balance</span>
+<div class="hidden absolute z-20 w-full mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl overflow-hidden" id="bankDropdownMenu">
+<div class="p-3 border-b border-slate-100 dark:border-slate-800">
+<div class="relative">
+<input class="w-full h-10 pl-9 pr-4 text-sm rounded-lg bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary/20" id="bankSearchInput" oninput="filterBanks()" placeholder="Search banks..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+</div>
+</div>
+<div class="max-h-60 overflow-y-auto" id="banksList">
+<div class="p-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3" onclick="selectBank('Access Bank', 'access')">Access Bank</div>
+<div class="p-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3" onclick="selectBank('GTBank', 'gtb')">GTBank</div>
+<div class="p-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3" onclick="selectBank('Zenith Bank', 'zenith')">Zenith Bank</div>
+<div class="p-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3" onclick="selectBank('Kuda Microfinance Bank', 'kuda')">Kuda Microfinance Bank</div>
+</div>
+</div>
+<input id="bankHiddenInput" name="bank" type="hidden"/>
+</div>
+</div>
+<!-- Account Number -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Account Number</label>
+<div class="relative">
+<input class="w-full h-14 pl-12 pr-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" id="accountNumberInput" placeholder="0123456789" type="number"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">pin</span>
+</div>
+</div>
+<!-- Amount -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Amount</label>
+<div class="relative">
+<input class="w-full h-14 pl-12 pr-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" id="amountInput" oninput="updateTotal(this.value)" placeholder="0.00" type="number"/>
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 font-bold">₦</span>
+</div>
+</div>
+<!-- Remark -->
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Remark (Optional)</label>
+<textarea class="w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none" placeholder="e.g. For school fees" rows="3"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Info Note -->
+<div class="mt-6 flex gap-3 p-4 rounded-lg border bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800">
+<span class="material-symbols-outlined dark:text-blue-400 text-primary">info</span>
+<p class="text-sm text-blue-900 dark:text-blue-200">Transaction fee may apply depending on the destination bank and amount.</p>
+</div>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 z-50">
+<div class="max-w-[960px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="text-center sm:text-left w-full sm:w-auto">
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">Total Amount</p>
+<p class="text-2xl font-black text-primary" id="totalAmount">₦0.00</p>
+</div>
+<button class="w-full sm:w-64 h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Searchable Beneficiary Modal (Hidden by default, used for structural design) -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" id="beneficiaryModal" onclick="if(event.target === this) this.classList.add('hidden')">
+<div class="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-lg">Select Beneficiary</h3>
+<button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" onclick="document.getElementById('beneficiaryModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-4">
+<div class="relative mb-4">
+<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary/20" id="beneficiarySearchInput" oninput="filterBeneficiaries()" placeholder="Search by name or bank..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+</div>
+<div class="max-h-80 overflow-y-auto space-y-2">
+<div class="p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3 border border-transparent hover:border-slate-200 dark:hover:border-slate-700" onclick="selectBeneficiary('John Doe', '0123456789', 'GTBank', 'gtb')">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<p class="font-semibold text-sm">John Doe</p>
+<p class="text-xs text-slate-500">GTBank • 0123456789</p>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3 border border-transparent hover:border-slate-200 dark:hover:border-slate-700" onclick="selectBeneficiary('Alice Smith', '9876543210', 'Access Bank', 'access')">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">AS</div>
+<div>
+<p class="font-semibold text-sm">Alice Smith</p>
+<p class="text-xs text-slate-500">Access Bank • 9876543210</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function toggleBankDropdown() {
+        document.getElementById('bankDropdownMenu').classList.toggle('hidden');
+    }
+
+    function selectBank(name, value) {
+        document.getElementById('selectedBankText').innerText = name;
+        document.getElementById('selectedBankText').classList.remove('text-slate-500');
+        document.getElementById('selectedBankText').classList.add('text-slate-900', 'dark:text-slate-100');
+        document.getElementById('bankHiddenInput').value = value;
+        document.getElementById('bankDropdownMenu').classList.add('hidden');
+    }
+
+    function filterBanks() {
+        const search = document.getElementById('bankSearchInput').value.toLowerCase();
+        const items = document.querySelectorAll('#banksList > div');
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            item.style.display = text.includes(search) ? 'flex' : 'none';
+        });
+    }
+
+    function selectBeneficiary(name, account, bankName, bankValue) {
+        document.getElementById('accountNumberInput').value = account;
+        selectBank(bankName, bankValue);
+        document.getElementById('beneficiaryModal').classList.add('hidden');
+    }
+
+    function filterBeneficiaries() {
+        const search = document.getElementById('beneficiarySearchInput').value.toLowerCase();
+        const items = document.querySelectorAll('#beneficiaryModal .max-h-80 > div');
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            item.style.display = text.includes(search) ? 'flex' : 'none';
+        });
+    }
+
+    function updateTotal(val) {
+        const amount = parseFloat(val) || 0;
+        document.getElementById('totalAmount').innerText = '₦' + amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function(e) {
+        if (!document.getElementById('bankDropdownContainer').contains(e.target)) {
+            document.getElementById('bankDropdownMenu').classList.add('hidden');
+        }
+    });
+</script></body></html>
