@@ -57,31 +57,7 @@
 </header>
 <main class="flex-1 px-4 py-6 md:px-10">
 <div class="max-w-[960px] mx-auto space-y-8">
-<!-- Phone Number Input Section -->
-<section class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-<label class="flex flex-col gap-3">
-<div class="flex justify-between items-center">
-<span class="text-base font-semibold">Recipient Phone Number</span>
-<div class="relative group inline-block">
-<span class="text-xs text-primary font-medium cursor-pointer hover:underline" id="self-fill-btn">Self</span>
-<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-800 dark:bg-slate-700 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-        0801 234 5678
-        <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800 dark:border-t-slate-700"></div>
-</div>
-</div>
-</div>
-<div class="relative group">
-<div class="flex items-center w-full h-14 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
-<span class="pl-4 pr-2 text-lg font-medium text-slate-500 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700 h-1/2 flex items-center select-none">+234</span>
-<input class="flex-1 h-full bg-transparent border-none focus:ring-0 text-lg font-medium pl-3 pr-12" id="phone-input" placeholder="801 234 5678" type="tel" value="801 234 5678"/>
-</div>
-<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
-<span class="material-symbols-outlined">contact_page</span>
-</button>
-</div>
-<p class="text-xs text-slate-500 dark:text-slate-400">Select or enter the number you want to top up</p>
-</label>
-</section>
+
 <!-- Network Operator Selection -->
 <section>
 <h3 class="text-lg font-bold mb-4">Select Operator</h3>
@@ -120,6 +96,34 @@
 </button>
 </div>
 </section>
+
+
+<!-- Phone Number Input Section -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<label class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="text-base font-semibold">Recipient Phone Number</span>
+<div class="relative group inline-block">
+<button class="text-xs text-primary font-medium cursor-pointer hover:underline" id="self-fill-btn">Self</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-800 dark:bg-slate-700 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        0801 234 5678
+        <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800 dark:border-t-slate-700"></div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="flex items-center w-full h-14 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
+<span class="pl-4 pr-2 text-lg font-medium text-slate-500 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700 h-1/2 flex items-center select-none">+234</span>
+<input class="flex-1 h-full bg-transparent border-none focus:ring-0 text-lg font-medium pl-3 pr-12" id="phone-input" placeholder="801 234 5678" type="tel" value="801 234 5678"/>
+</div>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">contact_page</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Select or enter the number you want to top up</p>
+</label>
+</section>
+
 <!-- Data Plans Section -->
 <section class="space-y-4">
 <div class="flex items-center justify-between">
