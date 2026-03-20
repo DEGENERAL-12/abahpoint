@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | ABAH-POINT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0052FF',
+                        'on-primary': '#FFFFFF',
+                        background: '#F8FAFC',
+                        surface: '#FFFFFF',
+                        outline: '#E2E8F0',
+                        'on-surface': '#0F172A',
+                        'on-surface-variant': '#64748B'
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+<script id="tailwind-config">
+        function goToStep(stepNumber) {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const title = document.getElementById('step-title');
+            const desc = document.getElementById('step-desc');
+            const dot1 = document.getElementById('dot-1');
+            const dot2 = document.getElementById('dot-2');
+            const mobileProgress = document.getElementById('mobile-progress');
+
+            const currentStep = stepNumber === 2 ? step1 : step2;
+            const nextStep = stepNumber === 2 ? step2 : step1;
+
+            // Start Fade Out
+            currentStep.classList.add('fade-out-left');
+            
+            setTimeout(() => {
+                currentStep.classList.add('hidden-step');
+                currentStep.classList.remove('fade-out-left');
+                
+                // Prepare Next Step
+                nextStep.classList.remove('hidden-step');
+                nextStep.classList.add('initial-right');
+
+                // Trigger Reflow
+                nextStep.offsetHeight;
+
+                // Update UI Elements
+                if (stepNumber === 1) {
+                    title.innerText = "Personal Details";
+                    desc.innerText = "Fill in your details to get started.";
+                    dot1.className = "w-12 h-1.5 bg-primary rounded-full transition-all duration-300";
+                    dot2.className = "w-2 h-1.5 bg-primary/20 rounded-full transition-all duration-300";
+                    mobileProgress.style.width = "50%";
+                } else {
+                    title.innerText = "Security";
+                    desc.innerText = "Keep your account secure with a strong password.";
+                    dot1.className = "w-2 h-1.5 bg-primary/20 rounded-full transition-all duration-300";
+                    dot2.className = "w-12 h-1.5 bg-primary rounded-full transition-all duration-300";
+                    mobileProgress.style.width = "100%";
+                }
+
+                // Finalize Fade In
+                nextStep.classList.remove('initial-right');
+                nextStep.classList.add('fade-in-right');
+                
+                // Clean up classes after animation
+                setTimeout(() => {
+                    nextStep.classList.remove('fade-in-right');
+                }, 400);
+            }, 400);
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('registration-form').onsubmit = (e) => {
+                e.preventDefault();
+                alert('Registration logic would trigger here!');
+            };
+        });
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        
+        .step-container {
+            position: relative;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-out-left {
+            opacity: 0;
+            transform: translateX(-20px);
+            pointer-events: none;
+        }
+        .fade-in-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .initial-right {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .hidden-step {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- Sticky Header -->
+<!-- Header/Top Nav -->
+<header class="sticky top-0 bottom-0 z-50 bg-white flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-6 md:px-10 py-4 bg-background-light dark:bg-background-dark">
+
+  <div class="flex items-center gap-3">
+    <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+      <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+    </div>
+
+    <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">
+      ABAH-POINT
+    </h2>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+      <span class="material-symbols-outlined">help_outline</span>
+    </button>
+
+    <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+      <span class="material-symbols-outlined">language</span>
+    </button>
+  </div>
+
+</header>
+<main class="flex-grow flex items-center justify-center px-4 py-12 md:py-24">
+<div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-surface rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-outline/30">
+<!-- Left Branding Side -->
+<div class="hidden md:flex flex-col justify-between p-16 bg-white relative overflow-hidden border-r border-outline/30">
+<div class="relative z-10">
+<div class="text-primary text-2xl font-black tracking-tighter mb-12">ABAH-POINT</div>
+<h1 class="text-on-surface text-6xl font-extrabold tracking-tighter leading-[1.1] mb-8">
+                    Start your journey <br/>to financial <br/><span class="text-primary">clarity.</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-sm leading-relaxed">
+                    Join thousands of users who trust ABAH-POINT for seamless transactions and secure financial management.
+                </p>
+</div>
+<!-- Progress Indicator (Left Side) -->
+<div class="relative z-10 flex gap-4">
+<div class="w-12 h-1.5 bg-primary rounded-full transition-all duration-300" id="dot-1"></div>
+<div class="w-2 h-1.5 bg-primary/20 rounded-full transition-all duration-300" id="dot-2"></div>
+</div>
+<!-- Abstract background elements -->
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute top-1/2 -left-12 w-48 h-48 bg-primary/5 rounded-full blur-2xl"></div>
+</div>
+<!-- Right Form Side -->
+<div class="p-8 md:p-16 bg-surface flex flex-col justify-center">
+<div class="md:hidden mb-8">
+<span class="text-primary text-2xl font-black tracking-tighter">ABAH-POINT</span>
+</div>
+<!-- Progress Bar (Mobile) -->
+<div class="md:hidden w-full h-1.5 bg-slate-100 rounded-full mb-8 overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300" id="mobile-progress" style="width: 50%;"></div>
+</div>
+<div class="mb-10">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-2" id="step-title">Personal Details</h2>
+<p class="text-on-surface-variant text-lg" id="step-desc">Fill in your details to get started.</p>
+</div>
+<form class="space-y-6 step-container" id="registration-form">
+<!-- Step 1: Personal Details -->
+<div class="space-y-6 step-transition" data-step="1" id="step-1">
+<div class="space-y-2">
+<label class="text-[11px] uppercase tracking-[0.15em] font-bold text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full h-14 px-6 bg-slate-50 border border-outline rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white transition-all placeholder:text-on-surface-variant/40" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] uppercase tracking-[0.15em] font-bold text-on-surface-variant ml-1">Phone Number</label>
+<div class="flex gap-3">
+<div class="flex items-center justify-center px-5 bg-slate-50 rounded-2xl text-on-surface font-semibold border border-outline">
+                                +234
+                            </div>
+<input class="flex-grow h-14 px-6 bg-slate-50 border border-outline rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white transition-all placeholder:text-on-surface-variant/40" placeholder="801 234 5678" required="" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] uppercase tracking-[0.15em] font-bold text-on-surface-variant ml-1">Email Address</label>
+<input class="w-full h-14 px-6 bg-slate-50 border border-outline rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white transition-all placeholder:text-on-surface-variant/40" placeholder="john@example.com" required="" type="email"/>
+</div>
+<div class="pt-6">
+<button class="w-full h-16 bg-primary text-on-primary font-bold rounded-full shadow-xl shadow-primary/20 active:scale-[0.98] hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2" onclick="goToStep(2)" type="button">
+<span>Next Step</span>
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Step 2: Security -->
+<div class="space-y-6 hidden-step step-transition" data-step="2" id="step-2">
+<div class="space-y-2">
+<label class="text-[11px] uppercase tracking-[0.15em] font-bold text-on-surface-variant ml-1">Password</label>
+<div class="relative group">
+<input class="w-full h-14 px-6 bg-slate-50 border border-outline rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white transition-all placeholder:text-on-surface-variant/40" id="pass-1" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword('pass-1')" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] uppercase tracking-[0.15em] font-bold text-on-surface-variant ml-1">Confirm Password</label>
+<div class="relative group">
+<input class="w-full h-14 px-6 bg-slate-50 border border-outline rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white transition-all placeholder:text-on-surface-variant/40" id="pass-2" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword('pass-2')" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row gap-4">
+<button class="w-full sm:w-1/3 h-16 bg-slate-100 text-on-surface font-bold rounded-full hover:bg-slate-200 active:scale-[0.98] transition-all" onclick="goToStep(1)" type="button">
+                            Back
+                        </button>
+<button class="flex-grow h-16 bg-primary text-on-primary font-bold rounded-full shadow-xl shadow-primary/20 active:scale-[0.98] hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Create Account</span>
+<span class="material-symbols-outlined text-xl" data-icon="how_to_reg">how_to_reg</span>
+</button>
+</div>
+</div>
+</form>
+<div class="mt-10 text-center">
+<p class="text-on-surface-variant text-sm font-medium">
+                    Already have an account? 
+                    <a class="text-primary font-bold hover:underline ml-1" href="#">Back to Login</a>
+</p>
+</div>
+<div class="mt-12 pt-8 border-t border-outline/50">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center transition-colors group-hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="text-[11px] uppercase tracking-[0.1em] font-bold text-on-surface">Data Protection</p>
+<p class="text-xs text-on-surface-variant">Your data is secured by bank-grade encryption</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full py-10 px-6 flex flex-col md:flex-row justify-between items-center gap-6 bg-white border-t border-outline/30">
+<div class="text-[11px] uppercase tracking-[0.2em] font-bold text-on-surface-variant/60">
+        © 2024 ABAH-POINT Fintech. All rights reserved.
+    </div>
+<div class="flex gap-8">
+<a class="text-[11px] uppercase tracking-[0.2em] font-bold text-on-surface-variant/60 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[11px] uppercase tracking-[0.2em] font-bold text-on-surface-variant/60 hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-[11px] uppercase tracking-[0.2em] font-bold text-on-surface-variant/60 hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</body></html>
